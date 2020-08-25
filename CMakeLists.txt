@@ -24,23 +24,25 @@ include(ranges_options)
 include(ranges_env)
 include(ranges_flags)
 
+include(GNUInstallDirs)
+
 add_library(range-v3-meta INTERFACE)
 add_library(range-v3::meta ALIAS range-v3-meta)
 target_include_directories(range-v3-meta INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>)
-target_include_directories(range-v3-meta SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>)
+target_include_directories(range-v3-meta SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include/feelpp>)
 target_compile_options(range-v3-meta INTERFACE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 
 add_library(range-v3-concepts INTERFACE)
 add_library(range-v3::concepts ALIAS range-v3-concepts)
 target_include_directories(range-v3-concepts INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>)
-target_include_directories(range-v3-concepts SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>)
+target_include_directories(range-v3-concepts SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include/feelpp>)
 target_compile_options(range-v3-concepts INTERFACE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 target_link_libraries(range-v3-concepts INTERFACE range-v3::meta)
 
 add_library(range-v3 INTERFACE)
 add_library(range-v3::range-v3 ALIAS range-v3)
 target_include_directories(range-v3 INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>)
-target_include_directories(range-v3 SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>)
+target_include_directories(range-v3 SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include/feelpp>)
 target_compile_options(range-v3 INTERFACE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 target_link_libraries(range-v3 INTERFACE range-v3::concepts range-v3::meta)
 
@@ -168,7 +170,6 @@ write_basic_package_version_file(
 )
 set(CMAKE_SIZEOF_VOID_P ${OLD_CMAKE_SIZEOF_VOID_P})
 
-include(GNUInstallDirs)
 install(TARGETS range-v3-concepts range-v3-meta range-v3 EXPORT range-v3-targets DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(EXPORT range-v3-targets FILE range-v3-targets.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/range-v3)
 install(FILES
