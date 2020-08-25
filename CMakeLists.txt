@@ -170,12 +170,12 @@ write_basic_package_version_file(
 )
 set(CMAKE_SIZEOF_VOID_P ${OLD_CMAKE_SIZEOF_VOID_P})
 
-install(TARGETS range-v3-concepts range-v3-meta range-v3 EXPORT range-v3-targets DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(EXPORT range-v3-targets FILE range-v3-targets.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/range-v3)
+install(TARGETS range-v3-concepts range-v3-meta range-v3 EXPORT range-v3-targets DESTINATION share/feelpp/feel/cmake/modules)
+install(EXPORT range-v3-targets FILE range-v3-targets.cmake DESTINATION share/feelpp/feel/cmake/modules)
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/range-v3-config-version.cmake
   cmake/range-v3-config.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/range-v3)
+  DESTINATION $share/feelpp/feel/cmake/modules)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
 
 export(EXPORT range-v3-targets FILE range-v3-config.cmake)
