@@ -175,7 +175,7 @@ install(EXPORT range-v3-targets FILE range-v3-targets.cmake DESTINATION share/fe
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/range-v3-config-version.cmake
   cmake/range-v3-config.cmake
-  DESTINATION $share/feelpp/feel/cmake/modules)
+  DESTINATION share/feelpp/feel/cmake/modules)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
 
 export(EXPORT range-v3-targets FILE range-v3-config.cmake)
